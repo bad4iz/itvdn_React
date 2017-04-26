@@ -19,34 +19,47 @@
 <div id="content"></div>
 
 <script type="text/babel">
-    var Article = React.createClass({
-        render: function() {
-            return (
-                    <div>
-                       <p> <h1> {this.props.title} </h1>автор: <b> {this.props.author} </b></p>
-                        <p> {this.props.body}! </p>
-                    </div>
-            );
+
+    var Component = React.createClass({
+        getInitialState : function() {
+            return {
+                text : "stranger"
+            };
+        },
+
+        handleWrite : function(event) {
+            console.log(event.target.value);
+            if(event.target.value.length){
+            this.setState({
+                text: event.target.value
+            });
+            }else{
+                this.setState({
+                    text: "stranger"
+                });
+            }
+        },
+
+        render : function() {
+            return <div>
+                <input type="text" onChange={this.handleWrite}/>
+                <p> Hello, {this.state.text}</p>
+            </div>;
         }
     });
-
     ReactDOM.render(
-            <Article title="Загловок первый" author="Nastya" body="Данный текст является тестовым"/>,
-        document.getElementById('content')
+            <Component />,
+        document.getElementById("content")
     );
-
-
 </script>
 
 </body>
 </html>
 <!--
 
-В компонент передается заголовок, имя автора и текст, а он их отображает, как статью. Внешний вид на ваше усмотрение.
-
-Подсказка
-
-Нужно создать компонент Article c параметрами, например, title, author и body и отображать их соответственно.
-
+В поле ввода вводится текст.
+Снизу надпись, которая отображает “Hello, <введенный текст>!”.
+Текст должен меняться по мере ввода.
+Если в поле ничего не введено, то должно быть выведено “Hello, stranger!”.
 
 -->
