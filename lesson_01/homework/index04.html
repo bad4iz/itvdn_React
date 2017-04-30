@@ -21,125 +21,26 @@
 </head>
 
 <body>
-<stong>Уровень сложности: средний</stong>
-<h2>Задание</h2>
-<p>Усовершенствовать список контактов, написаный на уроке. При клике на контакт,
-    он должен разворачиваться (увеличиваться в высоте) и должна отображаться какая-то дополнительная информация
-    о контакте (например, адрес и email). При повторном клике, информация должна сворачиваться.
+<h1>
+    Задание
+</h1>
+<p>
+
+В два поля вводится числа а и b. Нужно написать простой калькулятор, который умеет их складывать, вычитать и умножать.
+Отображение на ваше усмотрение.
 </p>
-<h3>Подсказка
-</h3>
-<p>Для того, чтобы контакт разворачивался, в компоненте Contact нужно добавить состояние
-    <code>isOpened</code>. Обрабатывать событие onClick, а в обработчике - изменять состояние
-    на противоположное предыдущему. В методе render в зависимости от значения <code>this.state.isOpened</code>
-    отображать либо сокращенную информацию о контактах, либо полную.</p>
+
+<b>Подсказка</b>
+<p>
+
+Вариантов реализации этого задания огромная масса. Проявите фантазию ������
+</p>
 <div id="content"></div>
 
 
 
 <script type="text/babel">
-  let CONTACTS = [
-    {
-      id: 1,
-      name: 'Darth Vader',
-      phoneNumber: '+250966666666',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad adipisci commodi, culpa esse et exercitationem facilis incidunt labore maiores neque odio quaerat quidem quis repudiandae sint suscipit tempora vero!',
-      image: ''
-    }, {
-      id: 2,
-      name: 'Princess Leia',
-      phoneNumber: '+250966344466',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aliquid consequuntur dolores et excepturi, iste labore nesciunt, placeat quis rerum sit, voluptatibus! Cumque dolore ex excepturi facilis nostrum rem?',
 
-      image: ''
-    }, {
-      id: 3,
-      name: 'Luke Skywalker',
-      phoneNumber: '+250976654433',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aliquid consequuntur dolores et excepturi, iste labore nesciunt, placeat quis rerum sit, voluptatibus! Cumque dolore ex excepturi facilis nostrum rem?',
-      image: ''
-    }, {
-      id: 4,
-      name: 'Chewbacca',
-      phoneNumber: '+250456784935',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dolorem doloribus eum optio temporibus voluptatem! Animi ea eum ipsa ipsam neque quos vitae, voluptate voluptates. Assumenda nam provident repellendus!',
-      image: ''
-    }
-  ];
-
-  let Contact = React.createClass({
-    getInitialState: function() {
-      return {
-        visible: false
-      };
-    },
-    handleClick: function(e) {
-      this.setState({
-        text: event.target.value
-      });
-      this.visible = !this.visible;
-      console.log(this.visible);
-
-    },
-    render: function() {
-      return (
-              <li className="contact" onClick={this.handleClick}>
-                  <img className="contact-image" src={this.props.image} width="60px" height="60px" />
-                  <div className="contact-info">
-                      <div className="contact-name"> {this.props.name} </div>
-                      <div className="contact-number"> {this.props.phoneNumber} </div>
-                      <div className={this.visible?'visible':'hide'} >   {this.props.description} </div>
-                  </div>
-              </li>
-      );
-    }
-  });
-
-  let ContactsList = React.createClass({
-    getInitialState: function() {
-      return {
-        displayedContacts: CONTACTS
-      };
-    },
-
-    handleSearch: function(event) {
-      let searchQuery = event.target.value.toLowerCase();
-      let displayedContacts = CONTACTS.filter(function(el) {
-        let searchValue = el.name.toLowerCase();
-        return searchValue.indexOf(searchQuery) !== -1;
-      });
-
-      this.setState({
-        displayedContacts: displayedContacts
-      });
-    },
-
-    render: function() {
-      return (
-              <div className="contacts">
-                  <input type="text" className="search-field" onChange={this.handleSearch} />
-                  <ul className="contacts-list" >
-                    {
-                      this.state.displayedContacts.map(function(el) {
-                        return <Contact
-                                key={el.id}
-                                name={el.name}
-                                phoneNumber={el.phoneNumber}
-                                image={el.image}
-                                description={el.description}
-                        />;
-                      })
-                    }
-                  </ul>
-              </div>
-      );
-    }
-  });
-
-  ReactDOM.render(
-          <ContactsList />,
-     document.getElementById("content")
-  );
 
 </script>
 
