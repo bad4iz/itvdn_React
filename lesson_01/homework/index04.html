@@ -12,11 +12,11 @@
     <script src="../../libs/react-dom.js"></script>
     <script src="../../libs/browser.js"></script>
 
-<style>
-    .hide{
-        display: none;
-    }
-</style>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 
 </head>
 
@@ -26,20 +26,66 @@
 </h1>
 <p>
 
-В два поля вводится числа а и b. Нужно написать простой калькулятор, который умеет их складывать, вычитать и умножать.
-Отображение на ваше усмотрение.
+    В два поля вводится числа а и b. Нужно написать простой калькулятор, который умеет их складывать, вычитать и
+    умножать.
+    Отображение на ваше усмотрение.
 </p>
 
 <b>Подсказка</b>
 <p>
 
-Вариантов реализации этого задания огромная масса. Проявите фантазию ������
+    Вариантов реализации этого задания огромная масса. Проявите фантазию ������
 </p>
 <div id="content"></div>
 
 
-
 <script type="text/babel">
+    let Calculator = React.createClass({
+        getInitialState : function() {
+            return {
+                displayedContacts : ""
+            };
+        },
+
+        handle: function (event) {
+            let reg = /[\+\-\*\/]/g;
+            let val = event.target.value;
+
+            let operator = val.match(reg);
+            let itog = 0;
+            let displayedContacts = val;
+            if(operator) {
+                if (1 == operator.length) {
+                    let arr = val.split(operator);
+                    let a = arr[0];
+                    let b = arr[1];
+
+                    if (operator == '-') itog = +a - +b;
+                    if (operator == '+') itog = +a + +b;
+                    if (operator == '*') itog = +a * +b;
+                    if (operator == '/') itog = +a / +b;
+                    displayedContacts = itog;
+                }
+            }
+            this.setState({
+                displayedContacts: displayedContacts
+            });
+        },
+
+        render: function() {
+            return (
+                    <div>
+                        <input type="text" onChange={this.handle}/>
+                        <div >{this.state.displayedContacts}</div>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <Calculator />,
+        document.getElementById("content")
+    );
 
 
 </script>
