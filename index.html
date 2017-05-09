@@ -3,11 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="./libs/mdl/material.min.css">
+    <script src="./libs/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </head>
 <body>
-<a href="lesson_01/homework/index01.html">lesson_01/homework/index01.html</a><br/>
-<a href="lesson_01/homework/index02.html">Homework №2</a><br/>
-<a href="lesson_01/homework/index03.html">Homework №3</a><br/>
-<a href="lesson_01/homework/index04.html">Homework №4</a><br/>
+<!-- Simple header with fixed tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Title</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#fixed-tab-1" class="mdl-layout__tab" id="tt1">
+                Введение в React
+                <!--
+                <span id="xml"><i>XML</i></span>
+                <span class="mdl-tooltip" for="xml">eXtensible Markup Language</span>
+                -->
+            </a>
+            <span class="mdl-tooltip" data-mdl-for="tt1">[ 38: 22 ]</span>
+            <a href="#fixed-tab-2" class="mdl-layout__tab" id="tt2">Подробнее о компонентах</a>
+            <span class="mdl-tooltip" data-mdl-for="tt2"> [ 45: 53 ]</span>
+
+            <a href="#fixed-tab-3" class="mdl-layout__tab" id="tt3">Окружение</a>
+            <span class="mdl-tooltip" data-mdl-for="tt3"> [ 44: 18 ]</span>
+
+            <a href="#fixed-tab-4" class="mdl-layout__tab" id="tt4">Роутинг и ES2015</a>
+            <span class="mdl-tooltip" data-mdl-for="tt4"> [ 01: 08: 36 ]</span>
+
+            <a href="#fixed-tab-5" class="mdl-layout__tab" id="tt5">Архитектура Flux, взаимодействие с API</a>
+            <span class="mdl-tooltip" data-mdl-for="tt5"> [ 01: 07: 13 ]</span>
+
+            <a href="#fixed-tab-6" class="mdl-layout__tab" id="tt6">Написание полноценного SPA</a>
+            <span class="mdl-tooltip" data-mdl-for="tt6">[ 35: 30 ]</span>
+
+            <a href="#fixed-tab-7" class="mdl-layout__tab" id="tt7">Deploy </a>
+            <span class="mdl-tooltip" data-mdl-for="tt7">[ 07: 52 ]</span>
+
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+    </div>
+    <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+            <div class="page-content">
+                <ul class='mdl-list'>
+                    <li class="mdl-list__item">
+                        <a href="lesson_01/homework/index01.html">Homework №1</a>
+                    </li>
+                    <li class="mdl-list__item">
+                        <a href="lesson_01/homework/index02.html">Homework №2</a>
+                    </li>
+                    <li class="mdl-list__item">
+                        <a href="lesson_01/homework/index03.html">Homework №3</a>
+                    </li>
+                    <li class="mdl-list__item">
+                        <a href="lesson_01/homework/index04.html">Homework №4</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+            <div class="page-content" style="background-color: #00b0ff">
+
+                <ul class='mdl-list'>
+                    <li class="mdl-list__item">
+                        <a href="02-deep-in-components/homework/HomeWork01.html">Homework №1</a>
+                    </li>
+                    <li class="mdl-list__item">
+                        <a href="02-deep-in-components/homework/HomeWork02.html">Homework №2</a>
+                    </li>
+                    <li class="mdl-list__item">
+                        <a href="02-deep-in-components/homework/HomeWork03.html">Homework №3</a>
+                    </li>
+                    <li class="mdl-list__item">
+                        <a href="02-deep-in-components/homework/HomeWork04.html">Homework №4</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+            <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-4">
+            <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-5">
+            <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-6">
+            <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-7">
+            <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+    </main>
+</div>
+
 </body>
 </html>
