@@ -72,10 +72,31 @@ var dd =
 	var NotesApp = function (_React$Component) {
 	    _inherits(NotesApp, _React$Component);
 	
-	    function NotesApp() {
+	    function NotesApp(props) {
 	        _classCallCheck(this, NotesApp);
 	
-	        return _possibleConstructorReturn(this, (NotesApp.__proto__ || Object.getPrototypeOf(NotesApp)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (NotesApp.__proto__ || Object.getPrototypeOf(NotesApp)).call(this, props));
+	
+	        _this.state = {
+	            notes: [{
+	                id: 1,
+	                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+	                color: '#208600'
+	            }, {
+	                id: 2,
+	                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+	                color: '#862713'
+	            }, {
+	                id: 3,
+	                text: 'Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+	                color: '#862554'
+	            }, {
+	                id: 4,
+	                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+	                color: '#cfd000'
+	            }]
+	        };
+	        return _this;
 	    }
 	
 	    _createClass(NotesApp, [{
@@ -86,7 +107,7 @@ var dd =
 	                { className: 'notes-app' },
 	                'NoteApp',
 	                _react2.default.createElement(_noteEditor.NoteEditor, null),
-	                _react2.default.createElement(_notesGrid.NotesGrid, null)
+	                _react2.default.createElement(_notesGrid.NotesGrid, { notes: this.state.notes })
 	            );
 	        }
 	    }]);
@@ -21911,15 +21932,29 @@ var dd =
 	    }
 	
 	    _createClass(NotesGrid, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var grid = this.refs.grid;
+	            this.msnry = new Masonry(grid, {
+	                itemSelector: '.note',
+	                columnWidth: 200,
+	                gutter: 10,
+	                isFitWidth: true
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'note-grid' },
-	                'NoteGrid',
-	                _react2.default.createElement(_note.Note, null),
-	                _react2.default.createElement(_note.Note, null),
-	                _react2.default.createElement(_note.Note, null)
+	                this.props.notes.map(function (note) {
+	                    return _react2.default.createElement(
+	                        _note.Note,
+	                        { key: note.id, color: note.color },
+	                        note.text
+	                    );
+	                })
 	            );
 	        }
 	    }]);
@@ -21966,8 +22001,8 @@ var dd =
 	        value: function render() {
 	            return _react2.default.createElement(
 	                "div",
-	                { className: "note" },
-	                " Note"
+	                { style: { backgroundColor: this.props.color }, className: "note" },
+	                this.props.children
 	            );
 	        }
 	    }]);

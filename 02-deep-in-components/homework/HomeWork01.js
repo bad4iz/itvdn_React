@@ -4,12 +4,41 @@ import {NoteEditor} from './notes/noteEditor';
 import {NotesGrid} from './notes/notesGrid';
 
 class NotesApp extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            notes: [
+                {
+                    id: 1,
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+                    color: '#208600'
+                },
+                {
+                    id: 2,
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+                    color: '#862713'
+                },
+                {
+                    id: 3,
+                    text: 'Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+                    color: '#862554'
+                },
+                {
+                    id: 4,
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
+                    color: '#cfd000'
+                }
+            ]
+        };
+    }
+    
     render() {
         return (
            <div className="notes-app">
                NoteApp
                <NoteEditor/>
-               <NotesGrid/>
+               <NotesGrid notes={this.state.notes}/>
            </div>
         );
     }
