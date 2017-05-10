@@ -1,9 +1,49 @@
 import React from 'react';
 
 export class NoteEditor extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            text: ''
+        };
+    }
+    getInitialState() {
+        return {
+            this.state = {
+            text: ''
+        };
+        };
+    }
+    
+    handleTextChange(event) {
+        // this.setState({ text: event.target.value });
+        console.log(event.target.value );
+    }
+    
+    handleNoteAdd() {
+        const newNote = {
+            text: this.state.text,
+            color: 'yellow',
+            id: Date.now()
+        };
+        this.props.onNoteAdd(newNote);
+    }
+    
     render() {
         return (
-            <div className="note-editor">NoteEditor</div>
+            <div className="note-editor">
+                <textarea
+                    placeholder="Enter you note here"
+                    rows={5}
+                    className="textarea"
+                    onChange={this.handleTextChange}
+                />
+                <button
+                    className="add-button"
+                    onClick={this.handleNoteAdd}
+                >Add</button>
+            </div>
         );
     }
 }

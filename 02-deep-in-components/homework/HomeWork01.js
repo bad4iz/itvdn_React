@@ -33,11 +33,17 @@ class NotesApp extends React.Component {
         };
     }
     
+    handleNoteAdd(newNote) {
+        const newNotes = this.state.notes.slice();
+        newNotes.unshift(newNote);
+        this.setState({ notes: newNotes });
+    }
+    
     render() {
         return (
            <div className="notes-app">
                NoteApp
-               <NoteEditor/>
+               <NoteEditor onNoteAdd={this.handleNoteAdd}/>
                <NotesGrid notes={this.state.notes}/>
            </div>
         );

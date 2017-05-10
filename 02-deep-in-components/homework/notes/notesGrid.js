@@ -4,6 +4,7 @@ import {Note} from './note';
 export class NotesGrid extends React.Component {
     
     componentDidMount() {
+        console.log(this.refs.grid);
         const grid = this.refs.grid;
         this.msnry = new Masonry(grid, {
             itemSelector: '.note',
@@ -15,7 +16,7 @@ export class NotesGrid extends React.Component {
     
     render() {
         return (
-            <div className="note-grid">
+            <div className="note-grid" ref="grid">
                 {
                     this.props.notes.map((note) => {
                         return (<Note key={note.id} color={note.color}>{note.text}</Note>);

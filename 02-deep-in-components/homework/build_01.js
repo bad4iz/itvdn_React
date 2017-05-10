@@ -57,7 +57,7 @@ var dd =
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _noteEditor = __webpack_require__(182);
+	var _noteEditor = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./notes/noteEditor\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	var _notesGrid = __webpack_require__(183);
 	
@@ -100,13 +100,20 @@ var dd =
 	    }
 	
 	    _createClass(NotesApp, [{
+	        key: 'handleNoteAdd',
+	        value: function handleNoteAdd(newNote) {
+	            var newNotes = this.state.notes.slice();
+	            newNotes.unshift(newNote);
+	            this.setState({ notes: newNotes });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'notes-app' },
 	                'NoteApp',
-	                _react2.default.createElement(_noteEditor.NoteEditor, null),
+	                _react2.default.createElement(_noteEditor.NoteEditor, { onNoteAdd: this.handleNoteAdd }),
 	                _react2.default.createElement(_notesGrid.NotesGrid, { notes: this.state.notes })
 	            );
 	        }
@@ -21848,54 +21855,7 @@ var dd =
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 182 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.NoteEditor = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var NoteEditor = exports.NoteEditor = function (_React$Component) {
-	    _inherits(NoteEditor, _React$Component);
-	
-	    function NoteEditor() {
-	        _classCallCheck(this, NoteEditor);
-	
-	        return _possibleConstructorReturn(this, (NoteEditor.__proto__ || Object.getPrototypeOf(NoteEditor)).apply(this, arguments));
-	    }
-	
-	    _createClass(NoteEditor, [{
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement(
-	                "div",
-	                { className: "note-editor" },
-	                "NoteEditor"
-	            );
-	        }
-	    }]);
-	
-	    return NoteEditor;
-	}(_react2.default.Component);
-
-/***/ }),
+/* 182 */,
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21934,6 +21894,7 @@ var dd =
 	    _createClass(NotesGrid, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
+	            console.log(this.refs.grid);
 	            var grid = this.refs.grid;
 	            this.msnry = new Masonry(grid, {
 	                itemSelector: '.note',
@@ -21947,7 +21908,7 @@ var dd =
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'note-grid' },
+	                { className: 'note-grid', ref: 'grid' },
 	                this.props.notes.map(function (note) {
 	                    return _react2.default.createElement(
 	                        _note.Note,
