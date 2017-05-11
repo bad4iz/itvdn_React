@@ -8,16 +8,9 @@ export class NoteEditor extends React.Component {
             text: ''
         };
     }
-    getInitialState() {
-        return {
-            this.state = {
-            text: ''
-        };
-        };
-    }
     
     handleTextChange(event) {
-        // this.setState({ text: event.target.value });
+        this.setState({ text: event.target.value });
         console.log(event.target.value );
     }
     
