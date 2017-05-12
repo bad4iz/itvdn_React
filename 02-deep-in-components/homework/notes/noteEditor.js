@@ -11,7 +11,6 @@ export class NoteEditor extends React.Component {
     
     handleTextChange(event) {
         this.setState({ text: event.target.value });
-        console.log(event.target.value );
     }
     
     handleNoteAdd() {
@@ -30,11 +29,11 @@ export class NoteEditor extends React.Component {
                     placeholder="Enter you note here"
                     rows={5}
                     className="textarea"
-                    onChange={this.handleTextChange}
+                    onChange={this.handleTextChange.bind(this)}
                 />
                 <button
                     className="add-button"
-                    onClick={this.handleNoteAdd}
+                    onClick={this.handleNoteAdd.bind(this)}
                 >Add</button>
             </div>
         );
