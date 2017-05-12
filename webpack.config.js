@@ -1,5 +1,3 @@
-const NODE_ENV = process.env.NODE_ENV || 'development';
-
 module.exports = {
     entry: './02-deep-in-components/homework/HomeWork01.js',
     output: {
@@ -8,9 +6,9 @@ module.exports = {
     },
     
     watch: true,
-    
+
     watchOptions: {
-        aggregateTimeout: 200
+        aggregateTimeout: 100
     },
     plugins: [ ],
     devtool: 'source-map',
@@ -27,12 +25,4 @@ module.exports = {
             }
         ]
     }
-    
-    
 };
-
-if (NODE_ENV == 'production') {
-    module.exports.plugins.push(
-    
-    );
-}

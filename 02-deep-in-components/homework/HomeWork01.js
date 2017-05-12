@@ -32,7 +32,7 @@ class NotesApp extends React.Component {
             ]
         };
     }
-    
+
     handleNoteAdd(newNote) {
         const newNotes = this.state.notes.slice();
         newNotes.unshift(newNote);

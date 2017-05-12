@@ -4,7 +4,6 @@ import {Note} from './note';
 export class NotesGrid extends React.Component {
     
     componentDidMount() {
-        console.log(this.refs.grid);
         const grid = this.refs.grid;
         this.msnry = new Masonry(grid, {
             itemSelector: '.note',
@@ -12,6 +11,13 @@ export class NotesGrid extends React.Component {
             gutter: 10,
             isFitWidth: true
         });
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.notes.length !== prevProps.notes.length) {
+            this.msnry.reloadItems();
+            this.msnry.layout();
+        }
     }
     
     render() {
