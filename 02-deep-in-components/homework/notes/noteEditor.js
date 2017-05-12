@@ -22,7 +22,6 @@ export class NoteEditor extends React.Component {
         this.setState({ text: ''});
 
         this.props.onNoteAdd(newNote);
-        
     }
     
     render() {
@@ -32,7 +31,8 @@ export class NoteEditor extends React.Component {
                     placeholder="Enter you note here"
                     rows={5}
                     className="textarea"
-                    onChange={this.handleTextChange}
+                    value={this.state.text}
+                    onChange={this.handleTextChange.bind(this)}
                 />
                 <button
                     className="add-button"
