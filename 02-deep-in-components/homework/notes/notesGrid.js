@@ -21,11 +21,19 @@ export class NotesGrid extends React.Component {
     }
     
     render() {
+        const onNotesDelete = this.props.onNoteDelete;
         return (
             <div className="note-grid" ref="grid">
                 {
-                    this.props.notes.map((note) => {
-                        return (<Note key={note.id} color={note.color}>{note.text}</Note>);
+                    this.props.notes.map(function(note) {
+                        return (
+                            <Note
+                            key={note.id}
+                            onDelete={onNotesDelete.bind(null, note)}
+                            color={note.color}>
+                            {note.text}
+                            </Note>
+                        );
                     })
                 }
             </div>

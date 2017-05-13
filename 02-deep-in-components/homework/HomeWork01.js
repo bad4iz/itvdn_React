@@ -9,30 +9,29 @@ class NotesApp extends React.Component {
         
         this.state = {
             notes: [
-                {
-                    id: 1,
-                    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
-                    color: '#208600'
-                },
-                {
-                    id: 2,
-                    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
-                    color: '#862713'
-                },
-                {
-                    id: 3,
-                    text: 'Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
-                    color: '#862554'
-                },
-                {
-                    id: 4,
-                    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorum fugiat minima sed similique. Aliquid beatae commodi dignissimos dolore ducimus, enim fugiat nostrum vitae! Deleniti nihil perferendis quasi ratione voluptatem!',
-                    color: '#cfd000'
-                }
             ]
         };
     }
 
+    componentDidMount() {
+        const localNotes = JSON.parse(localStorage.getItem('notes'));
+        if (localNotes) {
+            this.setState({notes: localNotes});
+        }
+    }
+    
+    componentDidUpdate() {
+        this._updateLocalStorage();
+    }
+    
+    handleNoteDelete(note) {
+        const noteId = note.id;
+        const newNotes = this.state.notes.filter((note)=>{
+            return note.id !== noteId;
+        });
+        this.serState({notes: newNotes});
+    }
+    
     handleNoteAdd(newNote) {
         const newNotes = this.state.notes.slice();
         newNotes.unshift(newNote);
@@ -44,9 +43,15 @@ class NotesApp extends React.Component {
            <div className="notes-app">
                NoteApp
                <NoteEditor onNoteAdd={this.handleNoteAdd.bind(this)}/>
-               <NotesGrid notes={this.state.notes}/>
+               <NotesGrid notes={this.state.notes}
+               onNoteDelete={this.handleNoteDelete}/>
            </div>
         );
+    }
+    
+    _updateLocalStorage() {
+        const notes = JSON.stringify(this.state.notes);
+        localStorage.setItem('notes', notes);
     }
 }
 
