@@ -24,12 +24,13 @@ class NotesApp extends React.Component {
         this._updateLocalStorage();
     }
     
-    handleNoteDelete(note) {
-        const noteId = note.id;
-        const newNotes = this.state.notes.filter((note)=>{
+    handleNoteDelete(noted) {
+        const noteId = noted.id;
+        
+        const newNotes = this.state.notes.filter((note) => {
             return note.id !== noteId;
         });
-        this.serState({notes: newNotes});
+        this.setState({notes: newNotes});
     }
     
     handleNoteAdd(newNote) {
@@ -44,7 +45,7 @@ class NotesApp extends React.Component {
                NoteApp
                <NoteEditor onNoteAdd={this.handleNoteAdd.bind(this)}/>
                <NotesGrid notes={this.state.notes}
-               onNoteDelete={this.handleNoteDelete}/>
+               onNoteDelete={this.handleNoteDelete.bind(this)}/>
            </div>
         );
     }
