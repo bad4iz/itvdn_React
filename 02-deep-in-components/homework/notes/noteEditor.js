@@ -1,4 +1,5 @@
 import React from 'react';
+import {ColorInput} from './colorInput';
 
 export class NoteEditor extends React.Component {
     constructor(props) {
@@ -10,23 +11,25 @@ export class NoteEditor extends React.Component {
     }
     
     handleTextChange(event) {
-        this.setState({ text: event.target.value });
+        this.setState({text: event.target.value});
         console.log(this.text);
     }
+    
     handleNoteAdd() {
         const newNote = {
             text: this.state.text,
             color: 'yellow',
             id: Date.now()
         };
-        this.setState({ text: ''});
-
+        this.setState({text: ''});
+        
         this.props.onNoteAdd(newNote);
     }
     
     render() {
         return (
             <div className="note-editor">
+                <ColorInput />
                 <textarea
                     placeholder="Enter you note here"
                     rows={5}
@@ -37,7 +40,8 @@ export class NoteEditor extends React.Component {
                 <button
                     className="add-button"
                     onClick={this.handleNoteAdd.bind(this)}
-                >Add</button>
+                >Add
+                </button>
             </div>
         );
     }
