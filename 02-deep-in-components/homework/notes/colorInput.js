@@ -35,7 +35,8 @@ export class ColorInput extends React.Component {
                         this.state.colors.map((item, idx) => {
                             return (
                                 <li key={idx} style={{backgroundColor: item.color}}>
-                                    <input type="radio" name="colorInput" data-color={item.color}/>
+                                    <input className="radio" type="radio"  id={idx} name="colorInput" data-color={item.color}/>
+                                    <label htmlFor={idx}>А я переключаю радиокнопку</label>
                                 </li>
                             );
                         })
