@@ -36,7 +36,7 @@ export class ColorInput extends React.Component {
                             return (
                                 <li key={idx} style={{backgroundColor: item.color}}>
                                     <input className="radio" type="radio"  id={idx} name="colorInput" data-color={item.color}/>
-                                    <label htmlFor={idx}>А я переключаю радиокнопку</label>
+                                    <label htmlFor={idx}> &#10003; </label>
                                 </li>
                             );
                         })
