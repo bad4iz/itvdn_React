@@ -6,7 +6,8 @@ export class NoteEditor extends React.Component {
         super(props);
         
         this.state = {
-            text: ''
+            text: '',
+            backgroundColor: 'yellow'
         };
     }
     
@@ -14,7 +15,13 @@ export class NoteEditor extends React.Component {
         this.setState({text: event.target.value});
         console.log(this.text);
     }
-    
+
+    handleChangeColor(color) {
+        this.setState({
+            backgroundColor: color
+        });
+    }
+
     handleNoteAdd() {
         const newNote = {
             text: this.state.text,
@@ -28,9 +35,9 @@ export class NoteEditor extends React.Component {
     
     render() {
         return (
-            <div className="note-editor">
-                <ColorInput />
-                <textarea
+            <div style={{backgroundColor: this.state.backgroundColor}} className="note-editor">
+                <ColorInput backgroundColorHandle={this.handleChangeColor.bind(this)}/>
+                <textarea style={{backgroundColor: this.state.backgroundColor}}
                     placeholder="Enter you note here"
                     rows={5}
                     className="textarea"

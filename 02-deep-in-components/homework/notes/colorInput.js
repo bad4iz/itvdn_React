@@ -21,16 +21,25 @@ export class ColorInput extends React.Component {
                 {
                     id: 4,
                     color: 'blue'
+                },
+                {
+                    id: 5,
+                    color: 'gold'
                 }
-            ]
+            ],
+            color: 'red'
         };
     }
-    
-    
+
+    handleChangeColor(event) {
+        this.props.backgroundColorHandle(event.target.dataset.color);
+    }
+
     render() {
+        const backgr = this.props.backgroundColor;
         return (
-            <div className="colorInput">
-                <ul className="colorInput">
+            <div style={{backgroundColor: backgr}} className="colorInput">
+                <ul className="colorInput" onChange={this.handleChangeColor.bind(this)}>
                     {
                         this.state.colors.map((item, idx) => {
                             return (
