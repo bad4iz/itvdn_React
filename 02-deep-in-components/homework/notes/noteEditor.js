@@ -12,25 +12,25 @@ export class NoteEditor extends React.Component {
     }
     
     handleTextChange(event) {
-        this.setState({text: event.target.value});
-        console.log(this.text);
+        const text = event.target.value;
+        this.setState( {text: text} );
     }
 
     handleChangeColor(color) {
-        this.setState({
-            backgroundColor: color
-        });
+        this.setState( {backgroundColor: color} );
     }
 
     handleNoteAdd() {
-        const newNote = {
-            text: this.state.text,
-            color: 'yellow',
-            id: Date.now()
-        };
-        this.setState({text: ''});
-        
-        this.props.onNoteAdd(newNote);
+        if (this.state.text.length) {
+            const newNote = {
+                text: this.state.text,
+                color: this.state.backgroundColor,
+                id: Date.now()
+            };
+            this.setState({text: ''});
+
+            this.props.onNoteAdd(newNote);
+        }
     }
     
     render() {
