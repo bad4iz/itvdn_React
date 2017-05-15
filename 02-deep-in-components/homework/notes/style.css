@@ -1,0 +1,32 @@
+ul.colorInput{
+    padding: 0;
+}
+
+ul.colorInput>li {
+    margin: 2px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    padding: 0;
+    border-radius: 50%;
+    position: relative;
+}
+
+.radio+label{
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    left: 30%;
+    position: absolute;
+    font-size: 20px;
+}
+.radio{
+    opacity:0;
+}
+.radio:not(checked)+ label{
+    opacity: 0;
+}
+.radio:checked+ label{
+    opacity: 1;
+}
+
