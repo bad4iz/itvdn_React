@@ -41,7 +41,6 @@ class NotesApp extends React.Component {
     render() {
         return (
            <div className="notes-app">
-               NoteApp
                <NoteEditor onNoteAdd={this.handleNoteAdd.bind(this)}/>
                <NotesGrid notes={this.state.notes}
                onNoteDelete={this.handleNoteDelete.bind(this)}/>
