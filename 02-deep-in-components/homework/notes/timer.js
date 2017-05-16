@@ -6,7 +6,6 @@ export class Timer extends React.Component {
         super(props);
         this.state = {
             seconds: 0,
-            timer:'',
             tim: false
         };
     }
@@ -29,14 +28,14 @@ export class Timer extends React.Component {
     }
 
     clearTimer() {
-        clearInterval(this.timer);
+        this.setState({seconds: 0});
     }
 
     switchTimer() {
         console.log('switchTimer');
-        this.switch();
+        this.timer = setInterval(this.tick.bind(this), 1000);
         this.setState({
-            timer: setInterval(this.tick.bind(this), 1000)
+            tim: !this.state.tim
         });
     }
 
@@ -56,8 +55,8 @@ export class Timer extends React.Component {
         return (
             <div >
                 <h4> Уже прошло {this.state.seconds} секунд </h4>
-                <button onClick={this.clearTimer} >Сбросить</button>
-                <button  onClick={this.state.tim ? this.switchTimer : this.pauseTimer }>{this.state.tim ? 'Запустить' : 'Пауза'}</button>
+                <button onClick={this.clearTimer.bind(this)} >Сбросить</button>
+                <button  onClick={this.state.tim ? this.pauseTimer.bind(this) : this.switchTimer.bind(this) }>{this.state.tim ? 'Пауза' : 'Запустить' }</button>
             </div>
         );
     }
