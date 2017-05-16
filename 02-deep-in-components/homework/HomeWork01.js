@@ -8,7 +8,7 @@ class NotesApp extends React.Component {
         super(props);
         
         this.state = {
-            notes: [],
+            notes: []
         };
     }
 

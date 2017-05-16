@@ -1,4 +1,5 @@
 import React from 'react';
+import {Timer} from './timer';
 
 export class Note extends React.Component {
     render() {
@@ -6,7 +7,8 @@ export class Note extends React.Component {
             <div style={{backgroundColor: this.props.color}} className="note">
                <span className="delete-note"
                      onClick={this.props.onDelete}>x</span>
-                {this.props.children}
+                <p> {this.props.children}</p>
+                <Timer />
             </div>
         );
     }
