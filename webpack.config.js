@@ -8,7 +8,7 @@ module.exports = {
     watch: true,
 
     watchOptions: {
-        aggregateTimeout: 200
+        aggregateTimeout: 50
     },
     plugins: [ ],
     devtool: 'source-map',

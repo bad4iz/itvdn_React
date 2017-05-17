@@ -7,7 +7,8 @@ export class NoteEditor extends React.Component {
         
         this.state = {
             text: '',
-            backgroundColor: 'yellow'
+            backgroundColor: 'yellow',
+            seconds: 0
         };
     }
     
@@ -27,7 +28,7 @@ export class NoteEditor extends React.Component {
                 color: this.state.backgroundColor,
                 id: Date.now()
             };
-            this.setState({text: ''});
+            this.setState({text: '', seconds:0});
 
             this.props.onNoteAdd(newNote);
         }

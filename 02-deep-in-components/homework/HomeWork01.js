@@ -37,13 +37,31 @@ class NotesApp extends React.Component {
         newNotes.unshift(newNote);
         this.setState({ notes: newNotes });
     }
-    
+
+    handleNoteTimer(noted, sec) {
+        console.log('я живой');
+        console.log(noted);
+        console.log(sec);
+        noted.seconds = sec;
+
+        const noteId = noted.id;
+
+        const newNotes = this.state.notes.filter((note) => {
+            return note.id !== noteId;
+        });
+        newNotes.push(noted);
+        this.setState({ notes: newNotes });
+
+    }
+
     render() {
         return (
            <div className="notes-app">
                <NoteEditor onNoteAdd={this.handleNoteAdd.bind(this)}/>
                <NotesGrid notes={this.state.notes}
-               onNoteDelete={this.handleNoteDelete.bind(this)}/>
+               onNoteDelete={this.handleNoteDelete.bind(this)}
+               onNoteTimer={this.handleNoteTimer.bind(this)}
+               />
            </div>
         );
     }

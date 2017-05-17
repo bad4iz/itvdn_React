@@ -19,18 +19,22 @@ export class NotesGrid extends React.Component {
             this.msnry.layout();
         }
     }
-    
+
     render() {
         const onNotesDelete = this.props.onNoteDelete;
+        const onNoteTimer = this.props.onNoteTimer;
         return (
             <div className="note-grid" ref="grid">
                 {
-                    this.props.notes.map(function(note) {
+                    this.props.notes.map(function(note,idx) {
                         return (
                             <Note
-                            key={note.id}
+                            key={idx}
                             onDelete={onNotesDelete.bind(null, note)}
-                            color={note.color}>
+                            color={note.color}
+                            onTimer={onNoteTimer.bind(null, note)}
+                            time = {note.seconds}
+                            >
                             {note.text}
                             </Note>
                         );
