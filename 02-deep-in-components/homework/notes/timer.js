@@ -29,7 +29,7 @@ export class Timer extends React.Component {
 
     clearTimer() {
         this.setState({seconds: 0});
-        this.props.onTimer(this.state.seconds);
+        this.props.onTimer(0);
     }
 
     switchTimer() {
