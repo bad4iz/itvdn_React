@@ -37,9 +37,11 @@ export class NoteEditor extends React.Component {
     
     render() {
         return (
-            <div style={{backgroundColor: this.state.backgroundColor}} className="note-editor">
+            <div style={{backgroundColor: this.state.backgroundColor}} 
+                 className="note-editor">
                 <ColorInput backgroundColorHandle={this.handleChangeColor.bind(this)}/>
-                <textarea style={{backgroundColor: this.state.backgroundColor}}
+                <textarea 
+                    style={{backgroundColor: this.state.backgroundColor}}
                     placeholder="Enter you note here"
                     rows={5}
                     className="textarea"
