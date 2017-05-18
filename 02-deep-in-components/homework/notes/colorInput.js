@@ -50,7 +50,7 @@ export class ColorInput extends React.Component {
                             );
                         })
                     }
-                </ul>
+                </ul className="colorInput">
             </div>
         );
     }

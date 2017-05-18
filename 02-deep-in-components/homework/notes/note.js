@@ -3,6 +3,10 @@ import {Timer} from './timer';
 
 export class Note extends React.Component {
 
+    constructor(props) {
+        super(props);
+        // console.log(this.props);
+    }
 
     setTimer(seconds) {
         this.props.onTimer.bind(null, seconds)();

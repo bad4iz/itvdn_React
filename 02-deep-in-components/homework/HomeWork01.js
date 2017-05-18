@@ -39,19 +39,18 @@ class NotesApp extends React.Component {
     }
 
     handleNoteTimer(noted, sec) {
-        console.log('я живой');
-        console.log(noted);
-        console.log(sec);
-        noted.seconds = sec;
-
-        const noteId = noted.id;
-
-        const newNotes = this.state.notes.filter((note) => {
-            return note.id !== noteId;
-        });
-        newNotes.push(noted);
-        this.setState({ notes: newNotes });
-
+        // console.log('я живой');
+        // console.log(noted);
+        // console.log(sec);
+        // noted.seconds = sec;
+        //
+        // const noteId = noted.id;
+        //
+        // const newNotes = this.state.notes.filter((note) => {
+        //     return note.id !== noteId;
+        // });
+        // newNotes.push(noted);
+        // this.setState({ notes: newNotes });
     }
 
     render() {

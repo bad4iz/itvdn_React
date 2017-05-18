@@ -3,9 +3,11 @@ import React from 'react';
 export class Timer extends React.Component {
 
     constructor(props) {
+
         super(props);
+        // console.log(this.props);
         this.state = {
-            seconds: this.props.time,
+            seconds: this.props.time || 0,
             tim: false
         };
     }

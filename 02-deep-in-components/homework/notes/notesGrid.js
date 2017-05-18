@@ -26,14 +26,15 @@ export class NotesGrid extends React.Component {
         return (
             <div className="note-grid" ref="grid">
                 {
-                    this.props.notes.map(function(note,idx) {
+                    this.props.notes.map(function(note, idx) {
+                        console.log(note.seconds);
                         return (
                             <Note
                             key={idx}
                             onDelete={onNotesDelete.bind(null, note)}
                             color={note.color}
-                            onTimer={onNoteTimer.bind(null, note)}
-                            time = {note.seconds}
+                            // onTimer={onNoteTimer.bind(null, note)}
+                            // time = {note.seconds}
                             >
                             {note.text}
                             </Note>

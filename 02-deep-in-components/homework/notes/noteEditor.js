@@ -26,7 +26,8 @@ export class NoteEditor extends React.Component {
             const newNote = {
                 text: this.state.text,
                 color: this.state.backgroundColor,
-                id: Date.now()
+                id: Date.now(),
+                seconds:0
             };
             this.setState({text: '', seconds:0});
 
